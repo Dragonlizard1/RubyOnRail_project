@@ -1,0 +1,71 @@
+
+
+<% content_for :left_column do %>
+<!-- <div class = "new_div"> -->
+<h1>All Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Author</th>
+     
+   
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.user.first_name %></td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<% end %>
+
+<% content_for :center_column do %>
+
+<!-- <div class = "new_div"> -->
+<h1>New Posts</h1>
+
+
+<form action= '/post/create' method= "post">
+  <p><input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>"></p>
+  <p><label class = "new_label">Title: </label></p>
+    <p><input class = "new_input" type="text" name="title"/></p>
+    <p><label class = "new_label">Content: </label></p>
+      <p><input class = "new_input" type="textarea" name="content"/></p>
+    <p><label class = "new_label">Author: </label></p>
+      <p> <select  name="id"/>
+        <% @users.each do |author|  %>
+        <option value="<%=author.id %>" ><%= author.first_name %> <%= author.last_name %></option>
+        <% end %>
+
+       </select></p>
+    <p><input type="submit" value="Submit"></p>
+</form>
+
+<!-- </div> -->
+
+<%  end %>
+
+<% content_for :right_column do %>
+<h1>Go to Users Page</h1>
+<a href = "/"><button>All Users</button></a>
+
+
+
+
+
+
+<%  end %>
+
+

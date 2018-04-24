@@ -1,0 +1,71 @@
+
+	<div id = "wrapper">
+		<header>
+			<div class = "left">
+			<p id = "title1">CodingDojo Wall</p>
+		</div>
+			<div class = "right"><p><%= session[:name] %></p><a id = "logout" href ="/">logout</a></div>
+		</header>
+
+		<div class = "post_message">
+			<% if flash[:notice] %>
+			  <% flash[:notice].each do |note| %>
+			    <p id="notice"><%= note %></p>  
+			  <% end %>
+			<% end %>
+			<p>Post a message</p>
+			<form action='/messages/new' method='POST'>   
+       <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+	    	<input type="text" name="post_text" id="post_text1">
+
+	      <input type="submit" value="Add Post" id = "messagebutton">
+	    </form>
+		</div>
+
+  <% if not @post1.length == 0 %>  
+
+    <% @post1.reverse_each do |element1p| %>
+    <div class = "post_list">
+ 			 <p><%= element1p.user.name %> - <%=element1p["created_at"].strftime("%B  %d, %Y")%> </p>      
+     	<p class = "p_c_content"><%=element1p["p_content"]%></p>
+      
+	
+    </div>
+		<div class = "right1">
+	<% @comment1.where(posts_id:element1p["id"]).reverse_each do |element1c| %>
+				<% if element1c["posts_id"] == element1p["id"] %>
+				
+				  <div class = "comment_list">
+				  <p><%= element1c.users.name %>  - <%=element1c["created_at"].strftime("%B  %d, %Y")%></p>      
+				  <p class = "p_c_content"><%=element1c["c_content"]%></p>
+					</div>
+				<% end %>
+			<% end %>
+
+    <div class = "comment_list">
+			<p>Add a comment</p>
+
+			<form action='/comments/new' method='POST'> 
+
+			  <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">  
+			  <input type="hidden" name="p_id" value = "<%= element1p["id"]%>">
+   			<input type="text" name="comment_text" id="comment_text">
+	      <input type="submit" value="Add Comment" id = "button">
+	    </form>
+		</div>
+		</div>
+
+     
+    <% end %>
+
+  <% end%>
+
+	
+	
+
+
+
+
+
+
+	</div>

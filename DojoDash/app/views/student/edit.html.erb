@@ -1,0 +1,32 @@
+<h1>Editing <%=@user[:first_name]%> <%= @user[:last_name]%></h1>
+
+
+'dojos/:dojo_id/students/:id' 
+<div id = "new_div">
+<form action= '/dojos/<%=@dojoschool.to_s%>/students/<%=@user[:id].to_s%>' method= "post">
+	<p><input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>"></p>
+	<p><label class = "new_label">First Name: </label>
+		<input class = "new_input" type="text" name="first_name" value = "<%=@user[:first_name]%>" /></p>
+    <p><label class = "new_label">Last_name: </label>
+    	<input class = "new_input" type="text" name="last_name" value = "<%=@user[:last_name]%>" /></p>
+    <p><label class = "new_label">Email: </label>
+    	<input class = "new_input" type="text" name="email" value = "<%= @user[:email]%>"  /></p>
+
+  <p> <label class = "new_label">Dojo:</label> 
+  	<select name= "location" >
+
+	  	<%  @data1school.each do |location1| %>
+		  	<% if location1.id == @user[:dojo_id]%>
+		 	<option value="<%= location1.id %>" selected><%= location1.branch %></option> 
+		 	<% else %>
+		 	<option value="<%= location1.id %>"><%= location1.branch %></option> 
+		 	<% end %>
+	  	<% end %>
+	</select>
+</p>
+  
+    <p><input type="submit" value="Submit"></p>
+</form>
+</div>
+
+<%= link_to 'Back', ('/dojos/'+@dojoschool.to_s+'/students')   %>

@@ -1,0 +1,24 @@
+<h1>New User</h1>
+
+
+
+<div id = "new_div">
+<form action= '/dojos/ <%=@dojoschool.to_s%>  /students' method= "post">
+	<p><input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>"></p>
+	<p><label class = "new_label">First Name: </label><input class = "new_input" type="text" name="first_name"/></p>
+    <p><label class = "new_label">Last_name: </label><input class = "new_input" type="text" name="last_name"/></p>
+    <p><label class = "new_label">Email: </label><input class = "new_input" type="text" name="email"/></p>
+
+  <p> <label class = "new_label">Dojo:</label> 
+  	<select name= "location">
+	  	<%  @data1school.each do |location1| %>
+	 	<option value="<%= location1.id %>"><%= location1.branch %></option>
+	  	<% end %>
+	</select>
+</p>
+  
+    <p><input type="submit" value="Submit"></p>
+</form>
+</div>
+
+<%= link_to 'Back', ('/dojos/'+@dojoschool.to_s+'/students')   %>

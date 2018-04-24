@@ -1,0 +1,16 @@
+<h1>New User</h1>
+
+
+
+<div id = "new_div">
+<form action= "/create" method= "post">
+	<p><input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>"></p>
+	<p><label class = "new_label">Branch: </label><input class = "new_input" type="text" name="branch"/></p>
+    <p><label class = "new_label">Street: </label><input class = "new_input" type="text" name="street"/></p>
+    <p><label class = "new_label">City: </label><input class = "new_input" type="text" name="city"/></p>
+    <p><label class = "new_label">State: </label><input class = "new_input" type="text" name="state"/></p>
+    <p><input type="submit" value="Submit"></p>
+</form>
+</div>
+
+<%= link_to 'Back', root_path %>

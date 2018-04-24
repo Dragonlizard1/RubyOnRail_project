@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+ <%= @user1.id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user1.name %>
+</p>
+
+<p>
+  <strong>Created_at:</strong>
+  <%= @user1.created_at.strftime("%m/%d/%Y  %a, %b %e at %l:%M") %>
+</p>
+<p>
+  <strong>Updated_at:</strong>
+  <%= @user1.updated_at.strftime("%m/%d/%Y %a, %b %e at %l:%M") %>
+</p>
+ 
+
+<%= link_to 'Edit', edit_user1_path(@user1) %> |
+<%= link_to 'Back', user1s_path %>

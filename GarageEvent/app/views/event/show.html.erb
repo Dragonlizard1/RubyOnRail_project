@@ -1,0 +1,75 @@
+<div id = "wrapper">
+
+	<div id = "top">
+
+	<h1 id = "top_head"><%= @event.title%></h1>
+		<div class= "right2">
+			<a href = "/event" id = "event_dash"><button id = "edit">Events Dashboard</button></a>
+
+			<a href = "/user/logout" id = "logout1"><button id = "logout">Logout</button></a>
+		</div>
+	</div>
+<div class = "left1">
+		<div>
+		<p class = "display1"><b>Host:</b> <%= @event.user.f_name %>  <%= @event.user.l_name %></p>
+		<p class = "display1"><b>Date:</b> <%= @event.datesetup.strftime("%b %e, %Y") %></p>
+		<p class = "display1"><b>Location:</b> <%= @event.city%>, <%= @event.state %></p>
+		<p class = "display1"><b>People who are joining the event:</b> <%= @count %></p>
+		</div>
+
+
+		<div id = "small_table1">
+	
+			<table id = "small_table2">
+				<thead>
+					<tr>
+						<td>Name</td>
+						<td>Location</td>
+						<td>State</td>	
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @people.each do |person|%>
+			
+							<tr>						
+							
+								<td><%= person.f_name %></td>
+								<td><%= person.city %></td>
+								<td><%= person.state %></td>
+					
+							</tr>
+				
+						<% end %>
+				</tbody>
+			</table>
+		</div>
+</div>
+<div class = "right1">
+	<h2>Discussion about this event:</h2>
+	<div id = "comments">
+	
+
+
+	</div>
+
+	<div id = "make_comment">
+			<% if flash[:notice] %>
+		<div id= "flash1">
+		  <% flash[:notice].each do |note| %>
+		    <p id="notice"><%= note %></p>  
+			 <% end %>
+		 </div>
+	<% end %>
+		    <form action = "/comment/<%= @event.id %>" method = "post">
+	      <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+	        
+	      <label class = "label_comment"><b>Add Comment:</b> </label>
+	      <textarea  name = "content" class = "textarea1" ></textarea> 
+
+	           <p class= "row1"><input type = "submit" value = "Submit Comments" id = "Comment_Button"></p>
+	    </form>
+	</div>
+</div>
+
+</div>

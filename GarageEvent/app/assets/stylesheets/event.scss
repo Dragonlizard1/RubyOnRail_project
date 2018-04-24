@@ -1,0 +1,130 @@
+// Place all the styles related to the Event controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#top
+{
+	width: 900px;
+	margin-bottom: 10px;
+}
+#top_head
+{
+	width: 300px;
+	display:inline-block;
+	vertical-align: top;
+}
+
+.right2
+{
+	text-align: right;
+	width: 580px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+td
+{
+	border: 1px solid black;
+	padding: 5px;
+
+}
+thead
+{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+tr:nth-child(even), thead
+{
+	background-color: lightgrey;
+}
+
+table
+{
+	width: 800px;
+	border-collapse: collapse;
+	margin-bottom: 10px ;
+	background-color: white;
+	margin: auto;
+}
+#small_table1
+{
+
+	width: 400px;
+	text-align: left;
+}
+#small_table2
+{
+	margin:auto;
+	padding: 0;
+	width: 400px;
+}
+
+
+#edit, #logout, #event_button, #Comment_Button
+{
+
+	font-size: 15px;
+	font-weight: bold;
+	padding: 10px;
+	color: white;
+	background-color: navy;
+	border-radius: 25px;
+}
+
+
+
+.tables
+{
+
+	margin: 10px 0 30px 0;
+}
+
+#event_add
+{
+	padding: 10px;
+	width: 420px;
+}
+
+.display1
+{
+	font-size: 20px;
+	padding: 5px 5px 5px 20px;
+}
+
+h2
+{
+	margin-bottom: 5px;
+}
+
+#comments
+{
+	height: 300px;
+	width: 390px;
+	margin:auto;
+	border: 1px solid black;
+	overflow-y: scroll;
+	margin-bottom: 10px;
+	background-color: white;
+}
+h2, .label_comment
+{
+	margin: 5px;
+}
+
+#make_comment, #small_table1
+{
+	margin-top: 20px;
+	padding-top: 10px;
+	border-top: 2px solid black;
+}
+
+textarea
+{
+	width: 390px;
+	height: 50px;
+	overflow-y: scroll;
+	resize: none;
+	margin: auto;
+	margin-top: 5px;
+}

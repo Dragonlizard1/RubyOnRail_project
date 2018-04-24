@@ -1,0 +1,24 @@
+
+<% content_for :right_column do %>
+<h1>New User</h1>
+
+
+
+<div id = "new_div">
+<form action= '/users' method= "post">
+	<p><input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>"></p>
+	<p><label class = "new_label">First Name: </label></p>
+		<p><input class = "new_input" type="text" name="first_name"/></p>
+    <p><label class = "new_label">Last_name: </label></p>
+   		<p><input class = "new_input" type="text" name="last_name"/></p>
+    <p><label class = "new_label">Favorite Language: </label></p>
+    	<p>	<input class = "new_input" type="text" name="favorite_language"/></p>
+
+
+  
+    <p><input type="submit" value="Submit"></p>
+</form>
+	<a href= "/posts" ><button>All Posts</button></a>
+</div>
+
+<%  end %>

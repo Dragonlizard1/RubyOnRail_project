@@ -1,0 +1,17 @@
+<div id = "new_div">
+<form action= "/update/<%= @data1[:id].to_s %>" method= "post">
+	<p><input type="hidden" name="authenticity_token" value = "<%= form_authenticity_token %>"></p>
+	<p><label class = "new_label">Branch: </label>
+		<input class = "new_input" type="text" name="branch" value = "<%=@data1[:branch]%>"/></p>
+    <p><label class = "new_label">Street: </label>
+    	<input class = "new_input" type="text" name="street" value = "<%=@data1[:street]%>"/></p>
+    <p><label class = "new_label">City: </label>
+    	<input class = "new_input" type="text" name="city" value = "<%=@data1[:city]%>"/></p>
+    <p><label class = "new_label">State: </label>
+    	<input class = "new_input" type="text" name="state" value = "<%=@data1[:state]%>"/></p>
+    <p><input type="submit" value="Update"></p>
+</form>
+</div>
+
+<%= link_to 'Back', root_path %>
+

@@ -1,0 +1,130 @@
+<div id = "wrapper">
+
+	<div id = "top">
+
+	<h1 id = "top_head">Welcome <%= session[:f_name]%></h1>
+		<div class= "right2">
+		<a href = "/user/<%=session[:id]%>" id = "edit1"><button id = "edit">Edit My Profile</button></a>
+
+		<a href = "/user/logout" ><button id = "logout">Logout</button></a>
+		</div>
+	</div>
+
+<div class = "tables">
+	<h1>Here are some fo the events at your state:</h1>
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Date</td>
+				<td>Location</td>
+				<td>Host</td>
+				<td>Action/Status</td>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @event.each do |events|%>
+				<% if events.state == @state  %>
+					<tr>						
+						<td><a href = "/event/<%= events.id %>"><%= events.title %></a></td>
+						<td><%= events.datesetup.strftime("%b %e, %Y") %></td>
+						<td><%= events.city %></td>
+						<td><%= events.user.f_name %></td>
+						<td>
+							<a>Join</a>
+							<a>Cancel</a>
+							<a>Edit</a>
+							<a>Delete</a>
+						</td>
+					</tr>
+					<% end %>
+				<% end %>
+		</tbody>
+	</table>
+</div>
+
+
+		<div class="tables">
+			<h1>Here are some fo the events on other states:</h1>
+		<table>
+				<thead>
+					<tr>
+						<td>Name</td>
+						<td>Date</td>
+						<td>Location</td>
+						<td>State</td>
+						<td>Host</td>
+						<td>Action/Status</td>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<% @event.each do |events|%>
+						<% if not events.state == @state  %>
+							<tr>
+								
+								<td><a href = "/events/<%= events.id %>"><%= events.title %></a></td>
+								<td><%= events.datesetup.strftime("%b %e, %Y") %></td>
+								<td><%= events.city %></td>
+								<td><%= events.state %></td>
+								<td><%= events.user.f_name %></td>
+								<td>
+									<a>Join</a>
+									<a>Cancel</a>
+									<a>Edit</a>
+									<a>Delete</a>
+								</td>		
+							</tr>
+							<% end %>
+					<% end %>
+				</tbody>
+
+
+		</table>
+		</div>
+
+	<div id = "event_add" class = "border1">
+		<h1>Add Event</h1>
+				<% if flash[:notice] or flash[:alert]%>
+					<div id= "flash1">
+					  <% if flash[:notice] %>
+					  <% flash[:notice].each do |note| %>
+					    <p id="notice"><%= note %></p>  
+					  <% end %>
+					    <% end %>
+					  <% if flash[:alert]%>
+					  <% flash[:alert].each do |note| %>
+					    <p id="alert1"><%= note %></p>  
+					  <% end %>
+					    <% end %>
+				  </div>
+				<% end %>
+
+
+		<form action = "/event/create" method = "post">
+      <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+      <input type = "hidden" name = "event[data]" class = "input1">
+      <p class= "row1"><label class = "label1">Event Title: </label>
+      <input type = "text" name = "event[title]" class = "input1"></p>
+      <p class= "row1"> <label class = "label1">Date: </label>
+      <input type = "date" name = "event[datesetup]" class = "input1"></p>
+       
+      
+        <p class= "row1"><label class = "label1">Location: </label>
+      <input type = "text" name = "event[city]" id = "input_location">
+        <select  id="input_state" name="event[state]" />
+          <% @list_state.each do |states|  %>
+          <option> <%= states %></option>
+          <% end %>
+        </select>
+        </p>
+     
+
+      <p class= "row1"><input type = "submit" value = "Add Event" id = "event_button"></p>
+    </form>
+
+	</div>
+
+
+</div>

@@ -1,0 +1,35 @@
+
+
+	<% if !flash.empty? %>
+    <div id="flash"> 
+        <% flash.keys.each do |k| %> 
+            <div class="<%= k %>">
+                <%= flash[k] %>
+            </div>  
+        <% end %>   
+    </div>
+<% end %>
+
+
+		<header>
+				<h1>Dojo Survey</h1>
+		</header>
+		
+		<div>
+			<h2>Submitted Info</h2>
+			<p>Name:</p><p>  <%=@display[:name]%> </p>
+			<p>Dojo Location:</p><p>  <%=@display[:location]%> </p>
+			<p>Favorite Language:</p><p>  <%=@display[:language]%> </p>
+			<p>Comment:</p><p>  <%=@display[:comment]%> </p>
+
+			<form action='/'>
+				
+			<input id="button2" type='submit' value='Go Back'>
+			</form>	
+			
+		</div>
+
+
+
+
+

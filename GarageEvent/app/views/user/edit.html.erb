@@ -1,0 +1,52 @@
+<div id = "wrapper">
+
+	<div id = "top">
+
+	<h1>Welcome <%= session[:f_name]%></h1>
+		<div class= "right2">
+			<a href = "/event" id = "event_dash"><button name = "edit">Events Dashboard</button></a>
+
+			<a href = "/logout1" id = "logout"><button name = "Logout">Logout</button></a>
+		</div>
+	</div>
+
+	<% if flash[:notice] %>
+		<div id= "flash1">
+		  <% flash[:notice].each do |note| %>
+		    <p id="notice"><%= note %></p>  
+			 <% end %>
+		 </div>
+	<% end %>
+
+	<div class = "left1">
+	<h1>Edit Your Profile</h1>
+
+	    <form action = "/user/<%=session[:id]%>" method = "post">
+	      <input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+	        <input type = 'hidden' name = "_method" value = "patch">
+	      <p class= "row1"><label class = "label1">First Name: </label>
+	      <input type = "text" name = "user[f_name]" class = "input1" value = "<%= @user.f_name%>"></p>
+
+	      <p class= "row1"> <label class = "label1">Last Name: </label>
+	      <input type = "text" name = "user[l_name]" class = "input1" value = "<%= @user.l_name%>" ></p>
+
+	        <p class= "row1"><label class = "label1">Email: </label>
+	      <input type = "text" name = "user[email]" class = "input1" value = "<%= @user.email%>" ></p>
+	      
+	        <p class= "row1"><label class = "label1">Location: </label>
+	      <input type = "text" name = "user[city]" id = "input_location" value = "<%= @user.city%>" >
+	        <select  id="input_state" name="user[state]">
+	          <% @list_state.each do |states|  %>
+	          <option <%= "selected" if states == @user.state%>> <%= states %></option>
+	          
+	          <% end %>
+	        </select>
+	        </p>
+	     
+	
+	      <p class= "row1"><input type = "submit" value = "Update Records" id = "update"></p>
+	    </form>
+	</div>
+
+
+</div>

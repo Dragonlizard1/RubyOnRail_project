@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created_at</th>
+      <th>Updated_at</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user1s.each do |user1| %>
+      <tr>
+         <td><%= user1.id %></td>
+        <td><%= user1.name %></td>
+         <td><%= user1.created_at.strftime("%m/%d/%Y  %a, %b %e at %l:%M") %></td>
+          <td><%= user1.updated_at.strftime("%m/%d/%Y %a, %b %e at %l:%M") %></td>
+        <td><%= link_to 'Show', user1 %></td>
+        <td><%= link_to 'Edit', edit_user1_path(user1) %></td>
+        <td><%= link_to 'Destroy', user1, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User1', new_user1_path %>

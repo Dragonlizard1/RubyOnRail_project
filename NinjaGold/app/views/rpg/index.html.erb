@@ -1,0 +1,63 @@
+
+		<div id = "wrap1">
+			<h1>Ninja Gold Quest</h1>
+			<div id = "form1">
+				<label>Your Gold: </label><label><%=session[:mygold]%></label>
+			</div>
+			<div>
+				<form class = "quest" action = "/process" method ="post">
+					<input type="hidden" name="authenticity_token" value="VxLCoqvap2IdbFioGuFfT" />
+					<input type="hidden" name="building" value="farm" />
+					<h2>Farm</h2>
+					<p>(earns 10-20 golds)</p>
+					<input class = "button1" type='submit' value='Find Gold!'>
+				</form>
+
+				<form class = "quest" action = "/process" method ="post">
+					<input type="hidden" name="authenticity_token" value="VxLCoqvap2IdbFioGuFfT" />
+					<input type="hidden" name="building" value="cave" />
+					<h2>Cave</h2>
+					<p>(earns 5-10 golds)</p>
+					<input class = "button1" type='submit' value='Find Gold!'>
+				</form>
+
+				<form class = "quest" action = "/process" method ="post">
+					<input type="hidden" name="authenticity_token" value="VxLCoqvap2IdbFioGuFfT" />
+					<input type="hidden" name="building" value="house" />
+					<h2>House</h2>
+					<p>(earns 2-5 golds)</p>
+					<input class = "button1" type='submit' value='Find Gold!'>
+				</form>
+
+				<form class = "quest" action = "/process" method ="post">
+					<input type="hidden" name="authenticity_token" value="VxLCoqvap2IdbFioGuFfT" />
+					<input type="hidden" name="building" value="casino" />
+					<h2>Casino</h2>
+					<p>(earns/takes 0-50 golds)</p>
+					<input class = "button1" type='submit' value='Find Gold!'>
+				</form>
+			</div>
+			<p>Activities:</p>
+
+				
+			<div id = "activity">
+				
+				<% session[:activity1].reverse_each do |x|  %>
+			
+					<% if x["symbol"] == "pos" %>
+						<h4><%= x["activity"] %></h4>
+
+					<% elsif x["symbol"] == "neg" %>
+						<h5><%= x["activity"] %></h5>
+				 	<% end %>
+			 	<% end %>
+ 			</div>
+
+ 			<form  action = "/reset" method ="get">
+					
+					<input class = "button1" type='submit' value='Reset'>
+			</form>
+
+		</div>	
+
+		

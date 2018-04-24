@@ -1,0 +1,41 @@
+<h1><%=@data1[:branch]%> Dojo </h1>
+<%= link_to 'Edit', "/edit/" + @dojoschool.to_s %>
+<div id = "new_div">
+
+
+<p>Address:  <%=@data1[:street]%></p>
+<p>City:  <%=@data1[:city]%></p>
+<p>State:  <%=@data1[:state]%></p>
+
+</div>
+<h1>Student Roster</h1>
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+     
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+      
+     	<td><%= link_to 'Show', "/dojos/" + @dojoschool.to_s + "/students/" + user.id.to_s %></td>
+     	<td><%= link_to 'Edit', "/dojos/" + @dojoschool.to_s + "/students/" + user.id.to_s  + "/edit"%></td>
+     	<td><%= link_to 'Destroy', "/dojos/" + @dojoschool.to_s + "/student/" + user.id.to_s %></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Home', root_path %> 
+<%= link_to 'Add Student', "/dojos/" + @dojoschool.to_s + "/students/new" %>

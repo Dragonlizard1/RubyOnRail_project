@@ -1,0 +1,34 @@
+<h1>Dojos </h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Branch</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th colspan="4">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dojos.each do |place| %>
+      <tr>
+        <td><%= place.branch %></td>
+        <td><%= place.street %></td>
+        <td><%= place.city %></td>
+        <td><%= place.state %></td>
+        <td><%= link_to 'Student', "/dojos/" + place.id.to_s + "/students" %></td>
+     	<td><%= link_to 'Show', "/show/" + place.id.to_s %></td>
+     	<td><%= link_to 'Edit', "/edit/" + place.id.to_s %></td>
+     	<td><%= link_to 'Destroy', "/destroy/" + place.id.to_s %></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dojo', "/new" %>

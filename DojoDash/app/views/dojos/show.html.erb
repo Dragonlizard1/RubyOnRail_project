@@ -1,0 +1,14 @@
+<div id = "new_div">
+
+<p>Branch:  <%=@data1[:branch]%></p>
+<p>Street:  <%=@data1[:street]%></p>
+<p>City:  <%=@data1[:city]%></p>
+<p>State:  <%=@data1[:state]%></p>
+
+ 
+
+</div>
+
+<%= link_to 'Home', root_path %>
+
+<%= link_to 'Edit', "/edit/" + @data1[:id].to_s  %>

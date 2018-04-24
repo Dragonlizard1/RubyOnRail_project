@@ -1,0 +1,63 @@
+// Place all the styles related to the Post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*
+{
+	margin: 0;
+	padding: 0;
+}
+.right,.left
+{
+	font-size: 20px;
+	display: inline-block;
+	vertical-align: top;
+}
+.left
+{
+	width: 200px;
+}
+.right
+{
+	width: 590px;
+	text-align: right;
+}
+.right1
+{
+	margin-left: 200px;
+	width: 590px;
+	text-align: right;
+}
+
+.p_c_content
+{
+	text-align: left;
+	width: 590px;
+	height: 50px;
+	border: 1px solid black;
+}
+.post_list
+{
+	margin: 0 0 10px 0;
+}
+.comment_list
+{
+	margin: 0 0 10px 20px;
+}
+#wrapper
+{
+	width: 800px;
+	margin: auto;
+}
+
+input
+{
+	width: 200px;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: left;
+}
+
+#button
+{
+	text-align: center;
+}
